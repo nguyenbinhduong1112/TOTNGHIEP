@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Lễ Tốt Nghiệp - Nguyen Binh Duong</title>
+
+    <meta property="og:title" content="Lễ Tốt Nghiệp - Nguyen Binh Duong">
+    <meta property="og:description" content="Mời bạn đến dự lễ tốt nghiệp của mình!">
+    <meta property="og:image" content="thumbnail.jpg"> <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Dancing+Script:wght@700&family=Patrick+Hand&family=Pacifico&family=Charm:wght@700&display=swap');
+
+        @font-face {
+            font-family: 'EyesomeCustom';
+            src: url('Eyesome-Script.otf') format('opentype');
+            font-weight: normal; font-style: normal;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body, html {
+            background-color: #000;
+            font-family: 'Montserrat', sans-serif;
+            color: white; text-align: center;
+            width: 100%; height: 100%; overflow: hidden; 
+        }
+
+        /* ẢNH NỀN CHÍNH (FILE 1748x1240) */
+        .fixed-background {
+            position: fixed; 
+            top: -12%; left: -10%; width: 125%; height: 110%; 
+            z-index: 1; 
+            background-image: url('10536E24-3C94-4DD6-A4F1-38212CD4943B.jpeg'); /* NỀN RIÊNG ĐÂY */
+            background-size: cover;
+            background-position: center;
+            animation: slideFromRight 2s linear forwards;
+            transition: filter 0.5s ease;
+        }
+
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); 
+            z-index: 2; 
+        }
+
+        #vignette-layer {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, 
+                rgba(0,0,0,1) 0%, 
+                transparent 35%, 
+                transparent 45%, 
+                rgba(0,0,0,1) 100%);
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .scroll-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 10; 
+            overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth;
+        }
+        .scroll-container::-webkit-scrollbar { display: none; }
+
+        .screen {
+            width: 100%; height: 100vh; scroll-snap-align: start; scroll-snap-stop: always;
+            position: relative; display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            padding: 25px;
+        }
+
+        .text-content {
+            display: flex; flex-direction: column; justify-content: space-between;
+            height: 100%; padding: 80px 20px 100px 20px; 
+            width: 100%;
+            opacity: 0; animation: textFadeIn 1s ease-out 1s forwards;
+        }
+
+        .title-wrapper { transform: translateY(-20px) rotate(-8deg); }
+        .title { 
+            font-family: 'EyesomeCustom', cursive; 
+            font-size: 5rem; line-height: 0.8; margin-bottom: 20px;
+            font-style: italic; text-shadow: 0 2px 15px rgba(0,0,0,0.6);
+        }
+
+        .details-section { transform: translateY(15px); }
+        .name { 
+            font-family: 'EyesomeCustom', cursive; 
+            font-size: 2.1rem; margin-bottom: 8px; line-height: 1.1; color: #f8f8f8; 
+        }
+        
+        .subtitle { font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 10px; opacity: 0.9; font-weight: 600; }
+        .divider { width: 45px; height: 1.5px; background: white; margin: 12px auto; opacity: 0.6; }
+        .date-time { font-size: 1.1rem; font-weight: 700; letter-spacing: 1.5px; margin-bottom: 8px; }
+        .location { font-size: 0.85rem; letter-spacing: 1px; opacity: 0.8; }
+
+        .thank-you-text {
+            line-height: 1.8;
+            margin-bottom: 30px;
+            max-width: 320px;
+            font-weight: 400;
+            font-size: 1.15rem;
+
+            /* TEST FONT Ở ĐÂY: XÓA DẤU # Ở ĐẦU DÒNG NÀO THÌ DÒNG ĐÓ CHẠY */
+            /* font-family: 'Dancing Script', cursive; */
+             font-family: 'Patrick Hand', cursive;
+            /* font-family: 'Pacifico', cursive; */
+            /* font-family: 'Charm', cursive; */
+        }
+        
+        .highlight-name { font-weight: 700; color: #fff; }
+
+        .btn-group { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 300px; }
+
+        .small-btn {
+            position: relative; display: block; width: 100%; padding: 18px 20px; 
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            color: white; text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 12px; 
+            font-size: 0.85rem; font-weight: 600; overflow: hidden; 
+            transition: color 0.4s ease, border-color 0.4s ease; z-index: 1;
+        }
+
+        .small-btn::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #0056b3; transform: translateX(-101%); 
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: -1;
+        }
+        
+        .small-btn:hover::before { transform: translateX(0); }
+        .small-btn:hover { color: #fff; border-color: #0056b3; }
+
+        .call-action { font-size: 0.75rem; margin-top: 15px; opacity: 0.7; font-weight: 400; }
+        .phone-number {
+            color: #00a2ff; font-weight: 700; text-decoration: underline;
+            cursor: pointer; transition: 0.3s; display: inline-block;
+        }
+
+        @keyframes slideFromRight {
+            0% { opacity: 0; transform: translateX(1%) translateY(-5%); }
+            100% { opacity: 1; transform: translateX(-7%) translateY(-5%); }
+        }
+        @keyframes textFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .scroll-indicator {
+            position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center;
+            animation: fadeInIndicator 1s ease-out 2s forwards, bounce 2s infinite; opacity: 0;
+        }
+        @keyframes fadeInIndicator { to { opacity: 0.6; } }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-6px); } }
+        .chevron { width: 10px; height: 10px; border-right: 2px solid white; border-bottom: 2px solid white; transform: rotate(45deg); margin-top: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="fixed-background" id="bg-img"></div>
+    <div class="overlay" id="bg-overlay"></div>
+    <div id="vignette-layer"></div>
+
+    <div class="scroll-container" id="main-scroll">
+        <section class="screen">
+            <div class="text-content" id="fading-text">
+                <div class="title-wrapper">
+                    <h1 class="title">We did it!</h1>
+                </div>
+                <div class="details-section">
+                    <p class="subtitle">JOIN US FOR A GRADUATION PARTY</p>
+                    <h2 class="name">Nguyen Binh Duong</h2>
+                    <div class="divider"></div>
+                    <p class="date-time">25 THANG 4 | 13:00 - 15:00</p>
+                    <p class="location">ĐẠI HỌC VINH</p>
+                </div>
+            </div>
+            <div class="scroll-indicator" id="scroll-arrow">
+                <span style="font-size: 0.6rem; letter-spacing: 2px;">VUỐT XEM CHI TIẾT</span>
+                <div class="chevron"></div>
+            </div>
+        </section>
+
+        <section class="screen">
+            <p class="thank-you-text">
+                Sau 5 năm miệt mài <b>'debug'</b> thanh xuân tại Đại học Vinh, cuối cùng 
+                <span class="highlight-name">bduong</span> cũng đã <b>'deploy'</b> thành công dấu mốc này. 
+                Cảm ơn vì đã là một phần trong <b>source code</b> của mình!
+            </p>
+            <div class="btn-group">
+                <a href="https://maps.app.goo.gl/9" target="_blank" class="small-btn">
+                    Bấm vào đây nếu không biết đường
+                </a>
+                <a href="https://m.me/zuongzuongzuong" target="_blank" class="small-btn">
+                    Bấm vào đây để liên hệ bduong
+                </a>
+            </div>
+            <p class="call-action">
+                hoặc gọi trực tiếp qua số mình 
+                <span class="phone-number" onclick="copyPhone('0362590153', this)">0362590153</span>
+            </p>
+        </section>
+    </div>
+
+    <script>
+        const scrollContainer = document.getElementById('main-scroll');
+        const textLayer = document.getElementById('fading-text');
+        const arrowLayer = document.getElementById('scroll-arrow');
+        const bgImg = document.getElementById('bg-img');
+        const bgOverlay = document.getElementById('bg-overlay');
+        const vignetteLayer = document.getElementById('vignette-layer');
+
+        scrollContainer.addEventListener('scroll', function() {
+            let scrollPosition = scrollContainer.scrollTop;
+            let windowHeight = window.innerHeight;
+            let scrollFactor = scrollPosition / windowHeight;
+
+            let textOpacity = 1 - (scrollFactor * 2);
+            textLayer.style.opacity = textOpacity < 0 ? 0 : textOpacity;
+            arrowLayer.style.opacity = textOpacity < 0 ? 0 : textOpacity;
+
+            let vignetteOpacity = 1 - (scrollFactor * 1.5);
+            vignetteLayer.style.opacity = vignetteOpacity < 0 ? 0 : vignetteOpacity;
+
+            bgImg.style.filter = `blur(${scrollFactor * 12}px)`;
+            bgOverlay.style.backgroundColor = `rgba(0, 0, 0, ${0.4 + (scrollFactor * 0.45)})`;
+        });
+
+        function copyPhone(num, el) {
+            navigator.clipboard.writeText(num).then(() => {
+                const originalText = el.innerText;
+                el.innerText = "Đã sao chép!";
+                el.style.color = "#28a745"; 
+                setTimeout(() => {
+                    el.innerText = originalText;
+                    el.style.color = "#00a2ff";
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
