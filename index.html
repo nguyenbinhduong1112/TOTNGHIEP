@@ -7,7 +7,8 @@
 
     <meta property="og:title" content="Lễ Tốt Nghiệp - Nguyen Binh Duong">
     <meta property="og:description" content="Mời bạn đến dự lễ tốt nghiệp của mình!">
-    <meta property="og:image" content="thumbnail.jpg"> <meta property="og:type" content="website">
+    <meta property="og:image" content="thumbnail.jpg"> 
+    <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
 
     <style>
@@ -28,12 +29,11 @@
             width: 100%; height: 100%; overflow: hidden; 
         }
 
-        /* ẢNH NỀN CHÍNH (FILE 1748x1240) */
         .fixed-background {
             position: fixed; 
             top: -12%; left: -10%; width: 125%; height: 110%; 
             z-index: 1; 
-            background-image: url('10536E24-3C94-4DD6-A4F1-38212CD4943B.jpeg'); /* NỀN RIÊNG ĐÂY */
+            background-image: url('10536E24-3C94-4DD6-A4F1-38212CD4943B.jpeg');
             background-size: cover;
             background-position: center;
             animation: slideFromRight 2s linear forwards;
@@ -101,12 +101,7 @@
             max-width: 320px;
             font-weight: 400;
             font-size: 1.15rem;
-
-            /* TEST FONT Ở ĐÂY: XÓA DẤU # Ở ĐẦU DÒNG NÀO THÌ DÒNG ĐÓ CHẠY */
-            /* font-family: 'Dancing Script', cursive; */
-             font-family: 'Patrick Hand', cursive;
-            /* font-family: 'Pacifico', cursive; */
-            /* font-family: 'Charm', cursive; */
+            font-family: 'Patrick Hand', cursive;
         }
         
         .highlight-name { font-weight: 700; color: #fff; }
@@ -121,6 +116,7 @@
             border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 12px; 
             font-size: 0.85rem; font-weight: 600; overflow: hidden; 
             transition: color 0.4s ease, border-color 0.4s ease; z-index: 1;
+            cursor: pointer;
         }
 
         .small-btn::before {
@@ -132,7 +128,7 @@
         .small-btn:hover::before { transform: translateX(0); }
         .small-btn:hover { color: #fff; border-color: #0056b3; }
 
-        .call-action { font-size: 0.75rem; margin-top: 15px; opacity: 0.7; font-weight: 400; }
+        .call-action { font-size: 0.75rem; margin-top: 15px; opacity: 0.7; font-weight: 400; max-width: 300px; }
         .phone-number {
             color: #00a2ff; font-weight: 700; text-decoration: underline;
             cursor: pointer; transition: 0.3s; display: inline-block;
@@ -187,17 +183,23 @@
                 Cảm ơn vì đã là một phần trong <b>source code</b> của mình!
             </p>
             <div class="btn-group">
-                <a href="https://maps.app.goo.gl/9" target="_blank" class="small-btn">
+                <a href="https://www.google.com/maps/place/Iran/" target="_blank" class="small-btn">
                     Bấm vào đây nếu không biết đường
                 </a>
-                <a href="https://m.me/zuongzuongzuong" target="_blank" class="small-btn">
+                <a href="https://www.facebook.com/share/1B7FuifTEP/?mibextid=wwXIfr" target="_blank" class="small-btn">
                     Bấm vào đây để liên hệ bduong
                 </a>
             </div>
             <p class="call-action">
-                hoặc gọi trực tiếp qua số mình 
+                hoặc gọi trực tiếp qua số mình (thật ra thằng nào đéo lưu số này thì tự tử con mẹ đi đừng có đến nữa) à bấm vào số để test copy vào clipboard nhé: 
                 <span class="phone-number" onclick="copyPhone('0362590153', this)">0362590153</span>
             </p>
+
+            <div class="btn-group" style="margin-top: 20px;">
+                <a href="https://www.instagram.com/reel/DVgYb-5jSM9/?igsh=MWNuY3l2amVlaHZtNA==" target="_blank" class="small-btn">
+                    Bấm vào đây để nhận 1 quả tên lửa từ Iran(tự tử optional)
+                </a>
+            </div>
         </section>
     </div>
 
